@@ -1,0 +1,324 @@
+{
+  "name": "zovo-junit-report-viewer",
+  "displayName": "JUnit XML Test Report Viewer",
+  "description": "Inspect JUnit XML test reports in VS Code: testsuites, pass/fail/error/skip counts, slowest tests, flaky reruns and stack traces, offline.",
+  "version": "0.1.0",
+  "publisher": "zovo",
+  "license": "MIT",
+  "icon": "icon.png",
+  "galleryBanner": {
+    "color": "#0F3D2E",
+    "theme": "dark"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/theluckystrike/junit-report-viewer-vscode"
+  },
+  "bugs": {
+    "url": "https://github.com/theluckystrike/junit-report-viewer-vscode/issues"
+  },
+  "homepage": "https://github.com/theluckystrike/junit-report-viewer-vscode#readme",
+  "engines": {
+    "vscode": "^1.75.0"
+  },
+  "categories": [
+    "Other",
+    "Testing",
+    "Visualization"
+  ],
+  "keywords": [
+    "junit",
+    "xml",
+    "test-report",
+    "surefire",
+    "ci",
+    "testing",
+    "stack-trace",
+    "viewer"
+  ],
+  "main": "./src/extension.js",
+  "activationEvents": [
+    "onUri",
+    "onCustomEditor:zovo-junit.viewer"
+  ],
+  "capabilities": {
+    "untrustedWorkspaces": {
+      "supported": true
+    },
+    "virtualWorkspaces": true
+  },
+  "contributes": {
+    "customEditors": [
+      {
+        "viewType": "zovo-junit.viewer",
+        "displayName": "JUnit XML Test Report Viewer",
+        "selector": [
+          {
+            "filenamePattern": "junit.xml"
+          },
+          {
+            "filenamePattern": "*.junit.xml"
+          },
+          {
+            "filenamePattern": "test-results.xml"
+          },
+          {
+            "filenamePattern": "TEST-*.xml"
+          },
+          {
+            "filenamePattern": "surefire-*.xml"
+          }
+        ],
+        "priority": "default"
+      }
+    ],
+    "commands": [
+      {
+        "command": "zovoJunit.openWith",
+        "title": "Open in JUnit XML Test Report Viewer",
+        "category": "JUnit XML Test Report Viewer",
+        "icon": "$(beaker)"
+      },
+      {
+        "command": "zovoJunit.openSample",
+        "title": "Open the Sample JUnit XML Report",
+        "category": "JUnit XML Test Report Viewer"
+      },
+      {
+        "command": "zovoJunit.openWalkthrough",
+        "title": "Get Started",
+        "category": "JUnit XML Test Report Viewer"
+      },
+      {
+        "command": "zovoJunit.moreViewers",
+        "title": "More free tools by Zovo",
+        "category": "JUnit XML Test Report Viewer"
+      },
+      {
+        "command": "zovoJunit.supportDeveloper",
+        "title": "Support the developer",
+        "category": "JUnit XML Test Report Viewer"
+      },
+      {
+        "command": "zovoJunit.auditTestSuite",
+        "title": "Audit test failures and slow tests (Pro, 1 free try)",
+        "category": "JUnit XML Test Report Viewer"
+      },
+      {
+        "command": "zovoJunit.diffReports",
+        "title": "Compare two JUnit XML reports (Pro, 1 free try)",
+        "category": "JUnit XML Test Report Viewer"
+      },
+      {
+        "command": "zovoJunit.exportSummaryCsv",
+        "title": "Export test summary CSV and report (Pro, 1 free try)",
+        "category": "JUnit XML Test Report Viewer"
+      },
+      {
+        "command": "zovoJunit.zovoPro.auditTestSuite",
+        "title": "Zovo Pro: Audit test failures and slow tests"
+      },
+      {
+        "command": "zovoJunit.zovoPro.diffReports",
+        "title": "Zovo Pro: Compare two JUnit XML reports"
+      },
+      {
+        "command": "zovoJunit.zovoPro.exportSummaryCsv",
+        "title": "Zovo Pro: Export test summary CSV and report"
+      },
+      {
+        "command": "zovoJunit.zovoTitle.auditTestSuite",
+        "title": "Zovo Pro: Audit test failures and slow tests"
+      },
+      {
+        "command": "zovoJunit.zovoTitle.diffReports",
+        "title": "Zovo Pro: Compare two JUnit XML reports"
+      },
+      {
+        "command": "zovoJunit.zovoTitle.exportSummaryCsv",
+        "title": "Zovo Pro: Export test summary CSV and report"
+      },
+      {
+        "command": "zovoJunit.getPro",
+        "title": "Get Zovo Pro (USD 19 once, all Zovo extensions)",
+        "category": "Zovo Pro"
+      },
+      {
+        "command": "zovoJunit.payWithPayPal",
+        "title": "Pay for Zovo Pro with PayPal (USD 19, team of 5 USD 59)",
+        "category": "Zovo Pro"
+      },
+      {
+        "command": "zovoJunit.unlockWithSponsors",
+        "title": "I already paid: unlock with GitHub Sponsors",
+        "category": "Zovo Pro"
+      },
+      {
+        "command": "zovoJunit.enterLicenseKey",
+        "title": "Enter Zovo Pro license key",
+        "category": "Zovo Pro"
+      },
+      {
+        "command": "zovoJunit.removeLicense",
+        "title": "Remove Zovo Pro from this editor",
+        "category": "Zovo Pro"
+      },
+      {
+        "command": "zovoJunit.payByCard",
+        "title": "Pay for Zovo Pro by card (USD 19)",
+        "category": "Zovo Pro"
+      },
+      {
+        "command": "zovoJunit.enterKey",
+        "title": "Enter a key",
+        "category": "Zovo Pro"
+      }
+    ],
+    "menus": {
+      "editor/title": [
+        {
+          "command": "zovoJunit.zovoTitle.auditTestSuite",
+          "when": "activeCustomEditorId == 'zovo-junit.viewer' && config.zovoJunit.showProTools",
+          "group": "zovoPro@1"
+        },
+        {
+          "command": "zovoJunit.zovoTitle.diffReports",
+          "when": "activeCustomEditorId == 'zovo-junit.viewer' && config.zovoJunit.showProTools",
+          "group": "zovoPro@2"
+        },
+        {
+          "command": "zovoJunit.zovoTitle.exportSummaryCsv",
+          "when": "activeCustomEditorId == 'zovo-junit.viewer' && config.zovoJunit.showProTools",
+          "group": "zovoPro@3"
+        }
+      ],
+      "explorer/context": [
+        {
+          "command": "zovoJunit.openWith",
+          "when": "resourceFilename =~ /^(junit\\.xml|.*\\.junit\\.xml|test-results\\.xml|TEST-.*\\.xml|surefire-.*\\.xml)$/i && !explorerResourceIsFolder",
+          "group": "navigation@9"
+        },
+        {
+          "command": "zovoJunit.zovoPro.auditTestSuite",
+          "when": "resourceFilename =~ /^(junit\\.xml|.*\\.junit\\.xml|test-results\\.xml|TEST-.*\\.xml|surefire-.*\\.xml)$/i && !explorerResourceIsFolder && config.zovoJunit.showProTools",
+          "group": "zovoPro@1"
+        },
+        {
+          "command": "zovoJunit.zovoPro.diffReports",
+          "when": "resourceFilename =~ /^(junit\\.xml|.*\\.junit\\.xml|test-results\\.xml|TEST-.*\\.xml|surefire-.*\\.xml)$/i && !explorerResourceIsFolder && config.zovoJunit.showProTools",
+          "group": "zovoPro@2"
+        },
+        {
+          "command": "zovoJunit.zovoPro.exportSummaryCsv",
+          "when": "resourceFilename =~ /^(junit\\.xml|.*\\.junit\\.xml|test-results\\.xml|TEST-.*\\.xml|surefire-.*\\.xml)$/i && !explorerResourceIsFolder && config.zovoJunit.showProTools",
+          "group": "zovoPro@3"
+        }
+      ],
+      "commandPalette": [
+        {
+          "command": "zovoJunit.auditTestSuite",
+          "when": "config.zovoJunit.showProTools"
+        },
+        {
+          "command": "zovoJunit.diffReports",
+          "when": "config.zovoJunit.showProTools"
+        },
+        {
+          "command": "zovoJunit.exportSummaryCsv",
+          "when": "config.zovoJunit.showProTools"
+        },
+        {
+          "command": "zovoJunit.zovoPro.auditTestSuite",
+          "when": "false"
+        },
+        {
+          "command": "zovoJunit.zovoPro.diffReports",
+          "when": "false"
+        },
+        {
+          "command": "zovoJunit.zovoPro.exportSummaryCsv",
+          "when": "false"
+        },
+        {
+          "command": "zovoJunit.zovoTitle.auditTestSuite",
+          "when": "false"
+        },
+        {
+          "command": "zovoJunit.zovoTitle.diffReports",
+          "when": "false"
+        },
+        {
+          "command": "zovoJunit.zovoTitle.exportSummaryCsv",
+          "when": "false"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "JUnit XML Test Report Viewer",
+      "properties": {
+        "zovoJunit.maxFileMB": {
+          "type": "number",
+          "default": 16,
+          "minimum": 1,
+          "maximum": 128,
+          "description": "Files up to this size open in JUnit XML Test Report Viewer."
+        },
+        "zovoJunit.pageSize": {
+          "type": "number",
+          "default": 100,
+          "minimum": 20,
+          "maximum": 500,
+          "description": "Test cases shown on one page."
+        },
+        "zovoJunit.showProTools": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show the Zovo Pro tools (failure triage audit, report diff and CSV summary export) in the Command Palette, the Explorer menu, the editor title menu and the viewer toolbar. Everything free stays visible."
+        },
+        "zovoJunit.askForRating": {
+          "type": "boolean",
+          "default": true,
+          "description": "Ask once for a store rating after 3 JUnit XML reports open without an error across 2 days. Choosing No thanks never asks again. Nothing is sent anywhere."
+        },
+        "zovoJunit.showSupportLinks": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show the small Rate, More free tools and Zovo Pro links at the bottom of the viewer. Nothing is sent anywhere."
+        },
+        "zovo.junitview.trial.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show the 7-day Zovo Pro trial button in the Pro panel."
+        }
+      }
+    },
+    "walkthroughs": [
+      {
+        "id": "zovoJunit.start",
+        "title": "Get started with JUnit XML Test Report Viewer",
+        "description": "Inspect JUnit XML test reports in VS Code: testsuites, pass/fail/error/skip counts, slowest tests, flaky reruns and stack traces, offline.",
+        "steps": [
+          {
+            "id": "open",
+            "title": "Open a JUnit XML report",
+            "description": "Click any junit.xml, *.junit.xml, test-results.xml, TEST-*.xml or surefire-*.xml file in the Explorer, or run Open in JUnit XML Test Report Viewer.\n[Open the sample JUnit XML report](command:zovoJunit.openSample)",
+            "media": {
+              "image": "images/screenshot.png",
+              "altText": "A JUnit XML report open in the viewer showing testsuites, pass and fail counts, slowest tests and stack traces."
+            },
+            "completionEvents": [
+              "onCommand:zovoJunit.openSample"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "scripts": {
+    "test": "node scripts/test.js",
+    "package": "npx -y @vscode/vsce@3 package --no-dependencies"
+  },
+  "sponsor": {
+    "url": "https://github.com/sponsors/theluckystrike/sponsorships?tier_id=679878"
+  }
+}

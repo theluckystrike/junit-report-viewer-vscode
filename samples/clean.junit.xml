@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Clean Unit Suite" tests="3" failures="0" errors="0" skipped="0" time="0.210">
+  <testsuite name="com.zovo.payments.CheckoutSuite" tests="3" failures="0" errors="0" skipped="0" time="0.210">
+    <testcase classname="com.zovo.payments.CheckoutSuite" name="calculatesTaxForMultiCurrencyOrder" time="0.070"/>
+    <testcase classname="com.zovo.payments.CheckoutSuite" name="rejectsExpiredCardToken" time="0.090"/>
+    <testcase classname="com.zovo.payments.CheckoutSuite" name="retriesWebhookDelivery" time="0.050"/>
+  </testsuite>
+</testsuites>

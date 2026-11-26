@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Checkout CI Pipeline" tests="7" failures="1" errors="1" skipped="1" time="9.642">
+  <testsuite name="com.zovo.payments.CheckoutSuite" tests="4" failures="1" errors="0" skipped="1" time="7.310" timestamp="2026-11-26T18:10:00Z">
+    <testcase classname="com.zovo.payments.CheckoutSuite" name="calculatesTaxForMultiCurrencyOrder" time="0.084"/>
+    <testcase classname="com.zovo.payments.CheckoutSuite" name="rejectsExpiredCardToken" time="6.420">
+      <failure type="AssertionError" message="Expected HTTP 422 but received 500">AssertionError: Expected HTTP 422 but received 500
+    at CheckoutController.charge (src/checkout/controller.ts:142:11)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)</failure>
+      <system-out>Charge attempt orderId=ord_9821 currency=USD</system-out>
+    </testcase>
+    <testcase classname="com.zovo.payments.CheckoutSuite" name="retriesWebhookDelivery" time="0.806">
+      <flakyFailure type="TimeoutError" message="First attempt timed out after 500ms">TimeoutError: socket hang up on attempt 1</flakyFailure>
+    </testcase>
+    <testcase classname="com.zovo.payments.CheckoutSuite" name="supportsLegacySepaMandate" time="0.000">
+      <skipped message="Disabled until SEPA v2 rollout"/>
+    </testcase>
+  </testsuite>
+  <testsuite name="com.zovo.auth.SessionSuite" tests="3" failures="0" errors="1" skipped="0" time="2.332" timestamp="2026-11-26T18:10:08Z">
+    <testcase classname="com.zovo.auth.SessionSuite" name="rotatesRefreshToken" time="0.112"/>
+    <testcase classname="com.zovo.auth.SessionSuite" name="validatesEd25519Signature" time="0.045"/>
+    <testcase classname="com.zovo.auth.SessionSuite" name="loadsJwksFromLocalCache" time="2.175">
+      <error type="TypeError" message="Cannot read properties of undefined (reading 'kid')">TypeError: Cannot read properties of undefined (reading 'kid')
+    at KeyStore.resolve (src/auth/keystore.ts:88:23)
+    at SessionSuite.loadsJwksFromLocalCache (test/auth.spec.ts:54:18)</error>
+      <system-err>JWKS cache file missing key index</system-err>
+    </testcase>
+  </testsuite>
+</testsuites>
